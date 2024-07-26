@@ -145,9 +145,46 @@ internal class Program
                     }
                     break;
                 case 3:
-                    Console.WriteLine("Ejercicio 3:Teniendo un valor entero, verificar si se cumple o no que ese valor es el doble de un impar");
+                    Console.WriteLine("Ejercicio 3: Teniendo un valor entero, verificar si se cumple o no que ese valor es el doble de un impar");
                     Console.WriteLine("Por ejemplo, 14 cumple con esta condición.");
-
+                    Console.WriteLine();
+                    Console.WriteLine("Porfavor, ingrese un valor numérico:");
+                    int valorEj3 = 0;
+                    bool esnumeroEj3 = true;
+                    while (true)
+                    {
+                        esnumeroEj3 = int.TryParse(Console.ReadLine(), out valorEj3);
+                        if (esnumeroEj3)
+                        {
+                            if (valorEj3 % 2 == 0)
+                            {
+                                int mitad = valorEj3 / 2;
+                                if (mitad % 2 == 0)
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine($"La mitad del número {valorEj3} es {mitad} y es PAR.");
+                                    Console.WriteLine("No se cumplió la condición. Porfavor, ingrese otro valor numérico:");
+                                }
+                                else
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine($"La mitad del número {valorEj3} es {mitad} y es IMPAR. Por lo tanto se cumplió la condición!");
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine($"El número {valorEj3} es impar, por lo tanto es imposible que su doble sea par.");
+                                Console.WriteLine("No se cumplió la condición. Porfavor, ingrese otro valor numérico:");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Valor incorrecto. Porfavor, inserte de nuevo un número entero.");
+                        }
+                    }
                     break;
                 case 4:
                     break;
