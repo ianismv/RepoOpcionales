@@ -187,6 +187,68 @@ internal class Program
                     }
                     break;
                 case 4:
+                    Console.WriteLine("Ejercicio 4: Dada un número del 1 al 10, devolver su “versión” en números romanos. ");
+                    Console.WriteLine();
+                    Console.WriteLine("Porfavor, ingrese un valor numérico del 1 al 10:");
+                    int valorEj4 = 0;
+                    bool esnumeroEj4 = true;
+                    string[] romanoshastael10 = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" };
+                    while (true)
+                    {
+                        esnumeroEj4 = int.TryParse(Console.ReadLine(), out valorEj4);
+                        if (esnumeroEj4)
+                        {
+                            if (valorEj4 >= 1 && valorEj4 <= 10)
+                            {
+                                switch (valorEj4)
+                                {
+                                    case 1:
+                                        Console.WriteLine($"La version de {valorEj4} en números romanos es {romanoshastael10[0]}");
+                                        break;
+                                    case 2:
+                                        Console.WriteLine($"La version de {valorEj4} en números romanos es {romanoshastael10[1]}");
+                                        break;
+                                    case 3:
+                                        Console.WriteLine($"La version de {valorEj4} en números romanos es {romanoshastael10[2]}");
+                                        break;
+                                    case 4:
+                                        Console.WriteLine($"La version de {valorEj4} en números romanos es {romanoshastael10[3]}");
+                                        break;
+                                    case 5:
+                                        Console.WriteLine($"La version de {valorEj4} en números romanos es {romanoshastael10[4]}");
+                                        break;
+                                    case 6:
+                                        Console.WriteLine($"La version de {valorEj4} en números romanos es {romanoshastael10[5]}");
+                                        break;
+                                    case 7:
+                                        Console.WriteLine($"La version de {valorEj4} en números romanos es {romanoshastael10[6]}");
+                                        break;
+                                    case 8:
+                                        Console.WriteLine($"La version de {valorEj4} en números romanos es {romanoshastael10[7]}");
+                                        break;
+                                    case 9:
+                                        Console.WriteLine($"La version de {valorEj4} en números romanos es {romanoshastael10[8]}");
+                                        break;
+                                    case 10:
+                                        Console.WriteLine($"La version de {valorEj4} en números romanos es {romanoshastael10[9]}");
+                                        break;
+
+                                }
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine($"El número {valorEj4} no se encuentra entre los números del 1 al 10");
+                                Console.WriteLine("No se cumplió la condición. Porfavor, ingrese un nuevo valor numérico del 1 al 10");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Valor incorrecto. Porfavor, inserte de nuevo un valor numérico.");
+                        }
+                    }
                     break;
                 case 5:
                     break;
