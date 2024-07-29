@@ -523,6 +523,42 @@ internal class Program
                     }
                     break;
                 case 11:
+                    Console.WriteLine("EJERCICIO 11: Escriba un programa que solicite una contraseña (el texto de la contraseña no es importante)");
+                    Console.WriteLine("Y la vuelva a solicitar hasta que las dos contraseñas coincidan.");
+                    Console.WriteLine();
+                    Console.WriteLine("Porfavor, ingrese UNA CONTRASEÑA:");
+                    string contraseña = LeerContraseña();
+                    while (string.IsNullOrEmpty(contraseña))
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, inserte una contraseña no nula.");
+                        contraseña = LeerContraseña();
+                    }
+                    while(true)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, inserte LA MISMA CONTRASEÑA: ");
+                        string contraseña2 = LeerContraseña();
+                        while (string.IsNullOrEmpty(contraseña))
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, inserte una contraseña no nula.");
+                            contraseña = LeerContraseña();
+                        }
+                        if (contraseña == contraseña2)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Se cumplió la condición de INSERTAR LA MISMA CONTRASEÑA.");
+                            Console.WriteLine();
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("NO se cumplió la condición de INSERTAR LA MISMA CONTRASEÑA. Vuelva a intentar");
+                            Console.WriteLine();
+                        }
+                    }
                     break;
                 case 12:
                     break;
@@ -562,5 +598,28 @@ internal class Program
                 break;
             }
         }
+    }
+    static string LeerContraseña()
+    {
+        string contraseña = string.Empty;
+        ConsoleKeyInfo keyInfo;
+
+        do
+        {
+            keyInfo = Console.ReadKey(true);
+
+            if (keyInfo.Key != ConsoleKey.Backspace && keyInfo.Key != ConsoleKey.Enter)
+            {
+                contraseña += keyInfo.KeyChar;
+                Console.Write("*");
+            }
+            else if (keyInfo.Key == ConsoleKey.Backspace && contraseña.Length > 0)
+            {
+                contraseña = contraseña.Substring(0, contraseña.Length - 1);
+                Console.Write("\b \b");
+            }
+        } while (keyInfo.Key != ConsoleKey.Enter);
+
+        return contraseña;
     }
 }
