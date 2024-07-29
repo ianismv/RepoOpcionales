@@ -499,6 +499,28 @@ internal class Program
                     Console.WriteLine($"SUMA TOTAL DE LOS {total} NÚMEROS: {suma} ");
                     break;
                 case 10:
+                    Console.WriteLine("EJERCICIO 10: Pide 5 números e indica si alguno es múltiplo de 3.");
+                    Console.WriteLine();
+                    int[] numeros = new int[5];
+                    for (int i = 0; i < numeros.Length; i++)
+                    {
+                        Console.WriteLine($"Porfavor, ingrese un VALOR NUMÉRICO correspondiente al número {i + 1}: ");
+                        esnum = int.TryParse(Console.ReadLine(), out v);
+                        while (!esnum)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, ingrese un valor numérico válido.");
+                            esnum = int.TryParse(Console.ReadLine(), out v);
+                        }
+                        numeros[i] = v;
+                    }
+                    for (int i = 0; i < numeros.Length; i++)
+                    {
+                        if (numeros[i] % 3 == 0)
+                        {
+                            Console.WriteLine($"EL NÚMERO {numeros[i]} es múltiplo de 3.");
+                        }
+                    }
                     break;
                 case 11:
                     break;
