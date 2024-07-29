@@ -39,6 +39,12 @@ internal class Program
     {
         Console.WriteLine("Bienvenido a la resolucion de ejercicios opcionales del Bootcamp 3.0!");
         Console.WriteLine();
+        int v = 0;
+        int edad = 0;
+        int num = 0;
+        int nom = 0;
+        bool esnum = true;
+
         while (true)
         {
             Console.WriteLine("MENÚ DE EJERCICIOS:");
@@ -68,10 +74,10 @@ internal class Program
             Console.WriteLine("Porfavor, seleccione el ejercicio a ejecutar:");
             int numEj = 0;
             bool validacionNumEj = int.TryParse(Console.ReadLine(), out numEj);
-            while (!validacionNumEj)
+            while (!validacionNumEj || numEj < 1 || numEj > 21 )
             {
                 Console.WriteLine();
-                Console.WriteLine("Valor incorrecto. Porfavor, ingrese un valor de tipo numérico.");
+                Console.WriteLine("Valor incorrecto. Porfavor, ingrese un valor de tipo numérico entre el 1 y el 21.");
                 validacionNumEj = int.TryParse(Console.ReadLine(), out numEj);
             }
             switch (numEj)
@@ -251,8 +257,162 @@ internal class Program
                     }
                     break;
                 case 5:
+                    Console.WriteLine("EEJERCICIO 5: Leer el nombre y las edades de dos personas y devolver el nombre del menor.");
+                    Console.WriteLine("En caso de que tengan la misma edad también debe indicarse.");
+                    Console.WriteLine("Devolver también la diferencia de edad en caso de corresponder.");
+                    Console.WriteLine();
+                    Console.WriteLine("Porfavor, ingrese el NOMBRE de LA PRIMER PERSONA:");
+                    string ej5nombre1 = "";
+                    string ej5nombre2 = "";
+                    int ej5edad1 = 0;
+                    int ej5edad2 = 0;
+                    bool soloLetras = true;
+                    while (true)
+                    {
+                        ej5nombre1 = Console.ReadLine();
+                        soloLetras = ej5nombre1.All(char.IsLetter);
+                        while (string.IsNullOrEmpty(ej5nombre1) || !soloLetras)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("El nombre a ingresar no puede ser nulo, vacío o contener valores numéricos. Porfavor, inserte un nombre valido.");
+                            ej5nombre1 = Console.ReadLine();
+                            soloLetras = ej5nombre1.All(char.IsLetter);
+                        }
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, ingrese la EDAD de LA PRIMER PERSONA:");
+                        esnum = int.TryParse(Console.ReadLine(), out ej5edad1);
+                        while (!esnum)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, ingrese su edad como valor numérico.");
+                            esnum = int.TryParse(Console.ReadLine(), out ej5edad1);
+                        }
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, ingrese el NOMBRE de LA SEGUNDA PERSONA:");
+                        ej5nombre2 = Console.ReadLine();
+                        soloLetras = ej5nombre2.All(char.IsLetter);
+                        while (string.IsNullOrEmpty(ej5nombre2) || !soloLetras)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("El nombre a ingresar no puede ser nulo, vacío o contener valores numéricos. Porfavor, inserte un nombre valido.");
+                            ej5nombre2 = Console.ReadLine();
+                            soloLetras = ej5nombre2.All(char.IsLetter);
+                        }
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, ingrese la EDAD de LA SEGUNDA PERSONA:");
+                        esnum = int.TryParse(Console.ReadLine(), out ej5edad2);
+                        while (!esnum)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, ingrese su edad como valor numérico.");
+                            esnum = int.TryParse(Console.ReadLine(), out ej5edad2);
+                        }
+                        Console.WriteLine();
+                        if(ej5edad1 == ej5edad2)
+                        {
+                            Console.WriteLine($"LA EDAD DE {ej5nombre1} ES DE {ej5edad1} AÑOS");
+                            Console.WriteLine($"LA EDAD DE {ej5nombre2} ES DE {ej5edad2} AÑOS");
+                            Console.WriteLine("AMBAS PERSONAS POSEEN LA MISMA EDAD");
+                            break;
+                        }
+                        else if(ej5edad1 > ej5edad2)
+                        {
+                            Console.WriteLine($"LA EDAD DE {ej5nombre1} ES DE {ej5edad1} AÑOS");
+                            Console.WriteLine($"LA EDAD DE {ej5nombre2} ES DE {ej5edad2} AÑOS");
+                            int dif = ej5edad1 - ej5edad2;
+                            Console.WriteLine($"AMBAS PERSONAS POSEEN {dif} AÑOS DE DIFERENCIA");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"LA EDAD DE {ej5nombre1} ES DE {ej5edad1} AÑOS");
+                            Console.WriteLine($"LA EDAD DE {ej5nombre2} ES DE {ej5edad2} AÑOS");
+                            int dif = ej5edad2 - ej5edad1;
+                            Console.WriteLine($"AMBAS PERSONAS POSEEN {dif} AÑOS DE DIFERENCIA");
+                            break;
+                        }
+                    }
                     break;
                 case 6:
+                    Console.WriteLine();
+                    Console.WriteLine("EJERCICIO 6: Escribir un programa que calcule el tipo de un triángulo conociendo la longitud de sus 3 lados.");
+                    Console.WriteLine("También que calcule su perímetro y su área");
+                    Console.WriteLine();
+                    while (true)
+                    {
+                        string tipot = "";
+                        double a1 = 0;
+                        double a2 = 0;
+                        double a3 = 0;
+                        Console.WriteLine("Porfavor, ingrese el valor numérico correspondiente a la longitud del primer ángulo en centímetros: ");
+                        esnum = double.TryParse(Console.ReadLine(), out a1);
+                        while (!esnum)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, ingrese un valor numérico.");
+                            esnum = double.TryParse(Console.ReadLine(), out a1);
+                        }
+                        Console.WriteLine("Porfavor, ingrese el valor numérico correspondiente a la longitud del segundo ángulo en centímetros: ");
+                        esnum = double.TryParse(Console.ReadLine(), out a2);
+                        while (!esnum)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, ingrese un valor numérico.");
+                            esnum = double.TryParse(Console.ReadLine(), out a2);
+                        }
+                        Console.WriteLine("Porfavor, ingrese el valor numérico correspondiente a la longitud del tercer ángulo en centímetros: ");
+                        esnum = double.TryParse(Console.ReadLine(), out a3);
+                        while (!esnum)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, ingrese un valor numérico.");
+                            esnum = double.TryParse(Console.ReadLine(), out a3);
+                        }
+                        if ((a1 + a2 > a3) && (a1 + a3 > a2) && (a2 + a3 > a1))
+                        {
+                            if (a1 == a2 && a2 == a3)
+                            {
+                                tipot = "EQUILÁTERO";
+                                Console.WriteLine();
+                                Console.WriteLine($"EL TRIANGULO ES DE TIPO {tipot}");
+                                double per = a1 + a2 + a3;
+                                double s = (a1 + a2 + a3) / 2;
+                                double area = Math.Sqrt(s * (s - a1) * (s - a2) * (s - a3));
+                                Console.WriteLine($"SU PERIMETRO ES DE {per} CENTÍMETROS");
+                                Console.WriteLine($"SU ÁREA ES DE {area} CENTÍMETROS");
+                                break;
+                            }
+                            else if(a1 == a2 || a1 == a3 || a2 == a3)
+                            {
+                                tipot = "ISÓSCELES";
+                                Console.WriteLine();
+                                Console.WriteLine($"EL TRIANGULO ES DE TIPO {tipot}");
+                                double per = a1 + a2 + a3;
+                                double s = (a1 + a2 + a3) / 2;
+                                double area = Math.Sqrt(s * (s - a1) * (s - a2) * (s - a3));
+                                Console.WriteLine($"SU PERIMETRO ES DE {per} CENTÍMETROS");
+                                Console.WriteLine($"SU ÁREA ES DE {area} CENTÍMETROS");
+                                break;
+                            }
+                            else
+                            {
+                                tipot = "ESCALENO";
+                                Console.WriteLine();
+                                Console.WriteLine($"EL TRIANGULO ES DE TIPO {tipot}");
+                                double per = a1 + a2 + a3;
+                                double s = (a1 + a2 + a3) / 2;
+                                double area = Math.Sqrt(s * (s - a1) * (s - a2) * (s - a3));
+                                Console.WriteLine($"SU PERIMETRO ES DE  {per}  CENTÍMETROS");
+                                Console.WriteLine($"SU ÁREA ES DE  {area}  CENTÍMETROS");
+                                break;
+                            }
+                        }
+                        else
+                        { 
+                            Console.WriteLine();
+                            Console.WriteLine("SEGÚN LOS LADOS ESTABLECIDOS, NO ES UN TRIANGULO. VUELVA A INTENTAR.");
+                        }
+                    }
                     break;
                 case 7:
                     break;
@@ -285,7 +445,7 @@ internal class Program
                 case 21:
                     break;
                 default:
-                    break;
+                break;
             }
             Console.WriteLine("Desea realizar otro ejercicio?(sí/no)");
             string respuesta = Console.ReadLine();
