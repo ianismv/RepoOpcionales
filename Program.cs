@@ -33,6 +33,8 @@
 //El numero de intentos estará dado por la cantidad de letras restantes que el usuario tenga que adivinar.
 //Ejemplo: La palabra ADIVINAR tendrá 8 intentos. Si la forma de la palabra es AD_V_NA_ son 3 intentos
 
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 internal class Program
 {
     private static void Main(string[] args)
@@ -415,8 +417,66 @@ internal class Program
                     }
                     break;
                 case 7:
+                    Console.WriteLine("EJERCICIO 7: Desarrolle un programa que calcule el desglose de una cantidad dada, en billetes y monedas tal que se minimice la cantidad de monedas y billetes");
+                    Console.WriteLine("Considere las denominaciones $1000, $500, $100, $50, $20, $10, $5, $2, $1, donde los últimos tres son monedas.");
+                    Console.WriteLine("Por ejemplo, para $1,723 se debe imprimir: “1 billete de $1000, 1 billete de $500, 1 billete de $200, 1 billete de $20, 1 moneda de $2, 1 moneda de $1");
+                    Console.WriteLine("Obviar los signos de billete ($) y tratar todos los valores como números, para los cálculos.");
+                    Console.WriteLine();
+                    int[] billetes = {1000, 500, 100, 50, 20, 10};
+                    int[] monedas = {5, 2, 1};
+                    while(true)
+                    {
+                        Console.WriteLine("Porfavor, ingrese el valor numérico correspondiente a la cantidad de dinero para desglosar: ");
+                        esnum = int.TryParse(Console.ReadLine(), out v);
+                        while (!esnum)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, ingrese un valor numérico.");
+                            esnum = int.TryParse(Console.ReadLine(), out v);
+                        }
+                        Console.WriteLine();
+                        Console.WriteLine($" ${v} DESGLOSADO EN BILLETES Y MONEDAS: ");
+                        Console.WriteLine();
+                        foreach (int billete in billetes)
+                        {
+                            int cant = (int)(v / billete);
+                            if (cant > 0)
+                            {
+                                Console.WriteLine($"CANTIDAD DE BILLETES DE ${billete}: {cant}");
+                                v -= cant * billete;
+                            }
+                        }
+                        foreach (int moneda in monedas)
+                        {
+                            int cant = (int)(v / moneda);
+                            if (cant > 0)
+                            {
+                                Console.WriteLine($"CANTIDAD DE MONEDAS DE ${moneda}: {cant}");
+                                v -= cant * moneda;
+                            }
+                        }
+                        Console.WriteLine() ;
+                        break;
+                    }
                     break;
                 case 8:
+                    Console.WriteLine("EJERCICIO 8: Pide un número N, y muestra todos los números del 1 al N.");
+                    Console.WriteLine();
+                    Console.WriteLine("Porfavor, ingrese un VALOR NUMÉRICO:");
+                    esnum = int.TryParse(Console.ReadLine(), out v);
+                    while (!esnum)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, ingrese un valor numérico válido.");
+                        esnum = int.TryParse(Console.ReadLine(), out v);
+                    }
+                    Console.WriteLine($"NÚMEROS DEL 1 AL {v}:  ");
+                    for (int i = 1; i <= v; i++)
+                    {
+                        Console.Write($"{i} ");
+                    }
+                    Console.Write(".");
+                    Console.WriteLine();
                     break;
                 case 9:
                     break;
