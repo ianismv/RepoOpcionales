@@ -33,6 +33,7 @@
 //El numero de intentos estará dado por la cantidad de letras restantes que el usuario tenga que adivinar.
 //Ejemplo: La palabra ADIVINAR tendrá 8 intentos. Si la forma de la palabra es AD_V_NA_ son 3 intentos
 
+using System.Numerics;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 internal class Program
@@ -479,6 +480,23 @@ internal class Program
                     Console.WriteLine();
                     break;
                 case 9:
+                    Console.WriteLine("EJERCICIO 9: Pedir 15 números y escribir la suma total.");
+                    Console.WriteLine();
+                    int total = 15;
+                    int suma = 0;
+                    for (int i = 1; i <= total; i++)
+                    {
+                        Console.WriteLine($"Porfavor, ingrese un VALOR NUMÉRICO correspondiente al número {i}: ");
+                        esnum = int.TryParse(Console.ReadLine(), out v);
+                        while (!esnum)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, ingrese un valor numérico válido.");
+                            esnum = int.TryParse(Console.ReadLine(), out v);
+                        }
+                        suma += v;
+                    }
+                    Console.WriteLine($"SUMA TOTAL DE LOS {total} NÚMEROS: {suma} ");
                     break;
                 case 10:
                     break;
