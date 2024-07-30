@@ -34,6 +34,7 @@
 //Ejemplo: La palabra ADIVINAR tendrá 8 intentos. Si la forma de la palabra es AD_V_NA_ son 3 intentos
 
 using System.Numerics;
+using System.Reflection.Emit;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 internal class Program
@@ -611,8 +612,90 @@ internal class Program
                     }
                     break;
                 case 13:
+                    Console.WriteLine("EJERCICIO 13: Proponer al usuario que adivine un número a base de intentarlo.");
+                    Console.WriteLine();
+                    total = 0;
+                    Console.WriteLine("Antes de comenzar, porfavor, inserte el rango total de numeros (De 0 a N): ");
+                    esnum = int.TryParse(Console.ReadLine(), out total);
+                    while (!esnum)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, ingrese un valor numérico válido.");
+                        esnum = int.TryParse(Console.ReadLine(), out total);
+                    }
+                    Random random = new Random();
+                    var rdm = random.Next(0, total);
+                    Console.WriteLine($"Se acaba de establecer un número aleatorio dentro de {total} números.");
+                    while (true)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, adivine el VALOR NUMÉRICO:");
+                        esnum = int.TryParse(Console.ReadLine(), out v);
+                        while (!esnum)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, ingrese un valor numérico válido.");
+                            esnum = int.TryParse(Console.ReadLine(), out v);
+                        }
+                        if (v == rdm)
+                        {
+                            Console.WriteLine($"Usted ha adivinado el número {v}. Felicitaciones!");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Usted no ha adivinado el número. Porfavor, intente otra vez: ");
+                        }
+                    }
                     break;
                 case 14:
+                    Console.WriteLine("RECORDEMOS EL EJERCICIO 11 PARA LA REALIZACIÓN DEL EJERCICIO 13");
+                    Console.WriteLine("EJERCICIO 13: Proponer al usuario que adivine un número a base de intentarlo.");
+                    Console.WriteLine();
+                    Console.WriteLine("EJERCICIO 14: Modificar el programa anterior para que vaya dando pistas del tipo «mayor» o «menor».");
+                    Console.WriteLine();
+                    total = 0;
+                    Console.WriteLine("Antes de comenzar, porfavor, inserte el rango total de numeros (De 0 a N): ");
+                    esnum = int.TryParse(Console.ReadLine(), out total);
+                    while (!esnum)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, ingrese un valor numérico válido.");
+                        esnum = int.TryParse(Console.ReadLine(), out total);
+                    }
+                    random = new Random();
+                    rdm = random.Next(0, total);
+                    Console.WriteLine($"Se acaba de establecer un número aleatorio dentro de {total} números.");
+                    while (true)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, adivine el VALOR NUMÉRICO:");
+                        esnum = int.TryParse(Console.ReadLine(), out v);
+                        while (!esnum)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, ingrese un valor numérico válido.");
+                            esnum = int.TryParse(Console.ReadLine(), out v);
+                        }
+                        if (v == rdm)
+                        {
+                            Console.WriteLine($"Usted ha adivinado el número {v}. Felicitaciones!");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Usted no ha adivinado el número.");
+                            if (v < rdm)
+                            {
+                                Console.WriteLine("PISTA: Se ingresó un número menor al que se debe adivinar.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("PISTA: Se ingresó un número mayor al que se debe adivinar.");
+                            }
+                            Console.WriteLine("Porfavor, intente otra vez.");
+                        }
+                    }
                     break;
                 case 15:
                     break;
