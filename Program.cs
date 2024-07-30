@@ -539,11 +539,11 @@ internal class Program
                         Console.WriteLine();
                         Console.WriteLine("Porfavor, inserte LA MISMA CONTRASEÑA: ");
                         string contraseña2 = LeerContraseña();
-                        while (string.IsNullOrEmpty(contraseña))
+                        while (string.IsNullOrEmpty(contraseña2))
                         {
                             Console.WriteLine();
                             Console.WriteLine("Porfavor, inserte una contraseña no nula.");
-                            contraseña = LeerContraseña();
+                            contraseña2 = LeerContraseña();
                         }
                         if (contraseña == contraseña2)
                         {
@@ -561,6 +561,54 @@ internal class Program
                     }
                     break;
                 case 12:
+                    Console.WriteLine("RECORDEMOS EL EJERCICIO 11 PARA LA REALIZACIÓN DEL EJERCICIO 12");
+                    Console.WriteLine("EJERCICIO 11: Escriba un programa que solicite una contraseña (el texto de la contraseña no es importante)");
+                    Console.WriteLine("Y la vuelva a solicitar hasta que las dos contraseñas coincidan.");
+                    Console.WriteLine();
+                    Console.WriteLine("EJERCICIO 12: Mismo ejercicio que el anterior pero con un límite de tres peticiones.");
+                    Console.WriteLine("Luego de las tres peticiones no debe solicitar más la contraseña y terminar el programa.");
+                    Console.WriteLine("Porfavor, ingrese UNA CONTRASEÑA:");
+                    Console.WriteLine();
+                    int cantpet = 0;
+                    contraseña = LeerContraseña();
+                    while (string.IsNullOrEmpty(contraseña))
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, inserte una contraseña no nula.");
+                        contraseña = LeerContraseña();
+                    }
+                    while (true)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Porfavor, inserte LA MISMA CONTRASEÑA: ");
+                        string contraseña2 = LeerContraseña();
+                        while (string.IsNullOrEmpty(contraseña2))
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Porfavor, inserte una contraseña no nula.");
+                            contraseña2 = LeerContraseña();
+                        }
+                        if (contraseña == contraseña2)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Se cumplió la condición de INSERTAR LA MISMA CONTRASEÑA.");
+                            Console.WriteLine();
+                            break;
+                        }
+                        else
+                        {
+                            cantpet++;
+                            Console.WriteLine();
+                            Console.WriteLine("NO se cumplió la condición de INSERTAR LA MISMA CONTRASEÑA. Vuelva a intentar");
+                            Console.WriteLine($"Se falló la petición número {cantpet}");
+                            Console.WriteLine();
+                            if (cantpet == 3)
+                            {
+                                Console.WriteLine("Se realizaron 3 peticiones fallidas. Se cerrará el programa");
+                                break;
+                            }
+                        }
+                    }
                     break;
                 case 13:
                     break;
